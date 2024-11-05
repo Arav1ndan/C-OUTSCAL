@@ -1,0 +1,15 @@
+C:\C++ Outscal\C# Learning\assi001\bin\Debug\net8.0\assi001.exe
+C:\C++ Outscal\C# Learning\assi001\bin\Debug\net8.0\assi001.deps.json
+C:\C++ Outscal\C# Learning\assi001\bin\Debug\net8.0\assi001.runtimeconfig.json
+C:\C++ Outscal\C# Learning\assi001\bin\Debug\net8.0\assi001.dll
+C:\C++ Outscal\C# Learning\assi001\bin\Debug\net8.0\assi001.pdb
+C:\C++ Outscal\C# Learning\assi001\obj\Debug\net8.0\assi001.GeneratedMSBuildEditorConfig.editorconfig
+C:\C++ Outscal\C# Learning\assi001\obj\Debug\net8.0\assi001.AssemblyInfoInputs.cache
+C:\C++ Outscal\C# Learning\assi001\obj\Debug\net8.0\assi001.AssemblyInfo.cs
+C:\C++ Outscal\C# Learning\assi001\obj\Debug\net8.0\assi001.csproj.CoreCompileInputs.cache
+C:\C++ Outscal\C# Learning\assi001\obj\Debug\net8.0\assi001.sourcelink.json
+C:\C++ Outscal\C# Learning\assi001\obj\Debug\net8.0\assi001.dll
+C:\C++ Outscal\C# Learning\assi001\obj\Debug\net8.0\refint\assi001.dll
+C:\C++ Outscal\C# Learning\assi001\obj\Debug\net8.0\assi001.pdb
+C:\C++ Outscal\C# Learning\assi001\obj\Debug\net8.0\assi001.genruntimeconfig.cache
+C:\C++ Outscal\C# Learning\assi001\obj\Debug\net8.0\ref\assi001.dll
