@@ -48,7 +48,11 @@ public:
     }
     void Heal()
     {
-        
+        srand(time(0));
+
+        int randomHeal = (rand() % (maxHeal - minHeal + 1) + minHeal);
+
+        cout << "Random heal value is :" << randomHeal << endl;
     }
     void Move();
     void Fire();
