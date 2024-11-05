@@ -28,14 +28,16 @@ public:
     }
     void TakeDamage(int damage)
     {
-        if(health > 0)
+        cout << "Player Health before getting damage: " << health << endl;
+        cout << "Enemy is damageing the Player by :" << damage << endl;
+        health = health - damage;
+        if (health < 0)
         {
-            cout <<"Player Health before getting damage: " << health <<endl;
-            cout <<"Enemy is damageing the Player by :" << damage <<endl;
-            health = health - damage;
-            cout <<" Player Health after getting damage: " << health << endl;
-        }else{
-            cout <<" ohh ohh Player died.. better luck next time.." <<endl;
+            cout << " ohh ohh Player died.. better luck next time.." << endl;
+        }
+        else
+        {
+            cout << " Player Health after getting damage: " << health << endl;
         }
     }
     int GiveDamage()
@@ -43,9 +45,8 @@ public:
         srand(time(0));
         int randomDamage = (rand() % (maxDamge - minDamage + 1) + minDamage);
 
-        cout << "random number: "<<randomDamage << endl;
+        cout << "random number: " << randomDamage << endl;
         return randomDamage;
-       
     }
     void Heal()
     {
@@ -57,18 +58,17 @@ public:
     }
     void Move();
     void Fire();
-    
 };
 
 class Enemy
 {
-    private:
+private:
     int health = 100;
 
-    int minDamage = 15;
-    int maxDamge = 25;
+    int minDamage = 10;
+    int maxDamge = 2;
 
-    public :
+public:
     Enemy()
     {
         cout << "Those who come again me will die without mercy.." << endl;
@@ -77,20 +77,22 @@ class Enemy
         cout << "Go back to the place you come from.." << endl;
         cout << "You cannot defeat me you fool..." << endl;
     }
-     int GetHealth()
+    int GetHealth()
     {
         return health;
     }
     void TakeDamage(int damage)
     {
-        if(health > 0)
+        cout << "Enemy Health before getting damage: " << health << endl;
+        cout << "Player is damageing the Enemy by :" << damage << endl;
+        health = health - damage;
+        if (health < 0)
         {
-            cout <<"Enemy Health before getting damage: " << health <<endl;
-            cout <<"Player is damageing the Enemy by :" << damage <<endl;
-            health = health - damage;
-            cout <<" Enemy Health after getting damage: " << health << endl;
-        }else{ 
-            cout <<"ahh.. ahhh.. ahh.... you are strong, i shall have my revenage..." <<endl;
+            cout << "ahh.. ahhh.. ahh.... you are strong, i shall have my revenage..." << endl;
+        }
+        else
+        {
+            cout << " Enemy Health after getting damage: " << health << endl;
         }
     }
     int GiveDamage()
@@ -98,38 +100,73 @@ class Enemy
         srand(time(0));
         int randomDamage = (rand() % (maxDamge - minDamage + 1) + minDamage);
 
-        cout << "random number: "<<randomDamage << endl;
+        cout << "random number: " << randomDamage << endl;
         return randomDamage;
-       
     }
 };
+void gameLoop(Player player, Enemy enemy)
+{
+    char playerChoise;
 
+    do{
+        cout << "Press A to attack and H to heal.." <<endl;
+    cin >> playerChoise;
+    if(playerChoise == 'a' || playerChoise == 'A')
+    {
+        enemy.TakeDamage(player.GiveDamage());
+
+        if(enemy.GetHealth() > 0){
+            cout<< "It's my turn now.." <<endl;
+            player.TakeDamage(enemy.GiveDamage());
+        }else{
+            cout << "Enemy died You Won.." << endl;
+        }
+        
+    }else if (playerChoise == 'h' || playerChoise == 'H')
+    {
+        player.Heal();
+
+        if(enemy.GetHealth() > 0)
+        {
+            cout<< "It's my turn now.." <<endl;
+            player.TakeDamage(enemy.GiveDamage());
+        }else{
+            cout << "Enemy died You Won.." << endl;
+        }
+    }else{
+        cout << "Invalid Choise.." << endl;
+    }
+    }while (player.GetHealth() > 0 && enemy.GetHealth() > 0 );
+   
+    
+    
+}
 int main()
 
 {
     char userInput;
-    do{
+    do
+    {
         cout << "Press S to start the game and any other key to exit the game." << endl;
-        cin >>userInput ;
-        if( userInput == 'S' || userInput == 's')
+        cin >> userInput;
+        if (userInput == 'S' || userInput == 's')
         {
             Player myPlayObj;
             Enemy enemObj;
-            cout << "The enemy health is: " << enemObj.GetHealth() << endl;
-            enemObj.TakeDamage(50);
-            enemObj.GiveDamage();
+            
+            gameLoop(myPlayObj, enemObj);
             // cout << "The player Health is: " <<myPlayObj.GetHealth() <<endl;
 
             // myPlayObj.TakeDamage(50);
             // myPlayObj.GiveDamage();
             // myPlayObj.Heal();
-        }else{
-            cout <<"Thank you for Playing.." << endl;
         }
-    }while (userInput == 'S' || userInput == 's');
-   
-   
-    //myPlayObj.GiveDamage();
-    //myPlayObj.Heal();
- 
+        else
+        {
+            cout << "Thank you for Playing.." << endl;
+        }
+    } while (userInput == 'S' || userInput == 's');
+
+    // myPlayObj.GiveDamage();
+    // myPlayObj.Heal();
 }
