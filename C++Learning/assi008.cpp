@@ -42,22 +42,26 @@ public:
         srand(time(0));
         int randomDamage = (rand() % (maxDamge - minDamage + 1) + minDamage);
 
-        //cout << "random number: "<<randomDamage << endl;
+        cout << "random number: "<<randomDamage << endl;
         return randomDamage;
        
     }
     void Heal()
     {
-        
+        srand(time(0));
+
+        int randomHeal = (rand() % (maxHeal - minHeal + 1) + minHeal);
+
+        cout << "Random heal value is :" << randomHeal << endl;
     }
     void Move();
     void Fire();
     
 };
-
-
 int main()
 {
     Player myPlayObj;
-   
+    myPlayObj.GiveDamage();
+    myPlayObj.Heal();
+ 
 }
