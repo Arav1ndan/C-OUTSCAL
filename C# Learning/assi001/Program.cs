@@ -13,8 +13,7 @@
 
 Game game = new Game();
 game.DisplayGameStory();
-Player player= new Player();
-Enemy enemy= new();
+game.SpawnCharacter();
 class Player{
     private int health = 100;
     private int maxHealth = 100;
@@ -112,5 +111,11 @@ class Game{
         Console.WriteLine("your stolen slice!");
         Console.WriteLine("--------------------------------------------------");
         Console.WriteLine("                      FIGHT!                      \n");
+    }
+
+    public void SpawnCharacter()
+    {
+        Player player= new Player();
+        Enemy enemy= new Enemy();
     }
 }
