@@ -12,9 +12,7 @@
 // Console.WriteLine("                       FIGHT!                    ");
 
 Game game = new Game();
-game.DisplayGameStory();
-game.SpawnCharacter();
-game.ProcessBattleLoop();
+game.GameLoop();
 class Player
 {
     private int health = 100;
@@ -195,6 +193,8 @@ class Game
 {
     Player player = new Player();
     Enemy enemy = new Enemy();
+
+    bool isGameExited = false;
     private void ShowBattleOptions()
     {
         Console.WriteLine("\n==================================================");
@@ -206,7 +206,7 @@ class Game
         Console.WriteLine("==================================================");
         Console.Write("  Your choice: ");
     }
-    public void SpawnCharacter()
+    private void SpawnCharacter()
     {
         Player player = new Player();
         Enemy enemy = new Enemy();
@@ -313,7 +313,7 @@ class Game
         string input = Console.ReadLine();
         return input.ToUpper();
     }
-    public void DisplayGameStory()
+    private void DisplayGameStory()
     {
         Console.Clear();
         Console.WriteLine("\n==================================================");
@@ -336,7 +336,7 @@ class Game
     }
 
 
-    public void ProcessBattleLoop()
+    private void ProcessBattleLoop()
     {
         do
         {
@@ -346,5 +346,60 @@ class Game
 
     }
     private bool AreCharactersAlive() => player.Health > 0 && enemy.Health > 0;
+    private void StartMenu()
+    {
+        Console.WriteLine("==================================================");
+        Console.WriteLine("     Press S to Get Your Masterpiece BACK...     ");
+        Console.WriteLine("     Press any other key to exit the game   ");
+        Console.WriteLine("==================================================");
+        ProcessStartMenuInput();
+    }
+    private void ExitGame()
+    {
+        Console.Clear();
+        Console.WriteLine("Thanks for Playing Midnight Pizza Fight..");
+        isGameExited = true;
+    }
+    private void ProcessStartMenuInput()
+    {
+        string PlayerInput = GetInput();
+        
 
+        if(PlayerInput == "S")
+        {
+            Console.Clear();
+            SpawnCharacter();
+            ProcessBattleLoop();
+        }else{
+            ExitGame();
+        }
+    }
+    private void RestartMenu()
+    {
+        Console.WriteLine("\n==================================================");
+        Console.WriteLine("     Press R to Restart...     ");
+        Console.WriteLine("     Press any other key to exit the game   ");
+        Console.WriteLine("==================================================");
+        ProcessRestartMenuInput();
+    }
+    private void ProcessRestartMenuInput()
+    {
+        string restartGame = GetInput();
+        if(restartGame == "R")
+        {
+            isGameExited = false;
+        }else{
+            ExitGame();
+        }
+    }
+    public void GameLoop()
+    {
+        while(!isGameExited)
+        {
+            DisplayGameStory();
+            StartMenu();
+            if(!isGameExited)
+			RestartMenu();
+        }
+    }
 }
